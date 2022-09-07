@@ -178,9 +178,9 @@ def trip_duration_stats(df,filtering):
     start_time = time.time()
 
     # to calculate total travel time  in days hours:mintues:seconds
-    tot_travel_time=round(df["Trip Duration"].sum()) 
+    tot_travel_time=round(df["Trip Duration"].sum())
     tot_travel_time=timedelta(seconds=tot_travel_time)
-    
+
     # to calculate average travel time  in days hours:mintues:seconds
     avg_travel_time =round( df["Trip Duration"].mean())
     avg_travel_time= timedelta(seconds=avg_travel_time)
@@ -201,12 +201,14 @@ def user_stats(df,filtering,city):
 
     # get and Display counts of user types
     user_types=df["User Type"].value_counts()
-    print(f"{user_types}\n")
+    print("user types: ")
+    print(user_types)
     # if for prevent errors because Washington does'nt have gender and birth day data
-    if city !="Washington":
+    if city !="washington":
         # get and Display counts of gender
         Gender= df["Gender"].value_counts()
-        print(f"{Gender}\n")
+        print("Gender")
+        print(Gender)
 
         # get earliest, most recent, and most common year of birth and count for most common year of birth
         earliest=int(df["Birth Year"].min())
@@ -217,7 +219,7 @@ def user_stats(df,filtering,city):
         #to display earliest, most recent, and most common year of birth and count for most common year of birth
         print(f"earliest, most recent year of birth are: (\'{earliest},{most_recent}\') , most common year of birth:(\'{most_common}\'),count:{most_common_count}")
     else :
-        print("No-data for Gender and Birth Year  for Washington")
+        print("\nNo-data for Gender and Birth Year  for Washington\n")
     print(f"filter: {filtering}")
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-' * 40)
@@ -258,5 +260,6 @@ def main():
 if __name__ == "__main__":
 
     main()
+
 
 
